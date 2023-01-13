@@ -1,8 +1,8 @@
 .list li:not(:last-child) {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .list li  {
-    max-width: 300px;
+    width: 500px;
     display: flex;
     align-items: center;
     justify-content: space-between;

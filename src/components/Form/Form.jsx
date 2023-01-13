@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "redux/contactsSlice";
-import { getContacts } from "redux/selectors";
-import { nanoid } from 'nanoid'
+import { addContact } from "redux/operations"; 
+import { selectContacts } from "redux/selectors";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import css from "../Form/Form.module.css"
@@ -12,8 +11,7 @@ export function Form() {
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const contactsId = nanoid();
+  const contacts = useSelector(selectContacts);
 
     function handleChange(e) {
     const { name, value } = e.target;
@@ -42,16 +40,15 @@ export function Form() {
           return toast.warn(`${name} is already in contacts.`)
     };
     
-    dispatch(addContact(name, number));
+    dispatch(addContact({name, number}));
     setName('');
     setNumber('');
     }
       
         return <form onSubmit={handleSubmit} className={css.form}>
-        <label htmlFor={contactsId}>
+        <label>
                 <p>Name</p> <input
         value={name}
-        id={contactsId}
         onChange={handleChange}
         type="text"
         name="name"
@@ -59,10 +56,9 @@ export function Form() {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required/> 
         </label>
-        <label htmlFor={contactsId}>
+        <label>
                 <p>Number</p> <input
         value={number}
-        id={contactsId}
         onChange={handleChange}
         type="tel"
         name="number"
