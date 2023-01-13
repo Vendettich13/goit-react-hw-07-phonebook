@@ -45,15 +45,27 @@ const contactsSlice = createSlice({
       .addCase(addContact.fulfilled, addContactFulfilledReducer)
       .addCase(deleteContact.fulfilled, deleteContactFulfilledReducer)
       .addMatcher(
-        isAnyOf(fetchContacts, addContact, deleteContact),
+        isAnyOf(
+          fetchContacts.pending,
+          addContact.pending,
+          deleteContact.pending
+        ),
         anyPendingReducer
       )
       .addMatcher(
-        isAnyOf(fetchContacts, addContact, deleteContact),
+        isAnyOf(
+          fetchContacts.rejected,
+          addContact.rejected,
+          deleteContact.rejected
+        ),
         anyRejectedReducer
       )
       .addMatcher(
-        isAnyOf(fetchContacts, addContact, deleteContact),
+        isAnyOf(
+          fetchContacts.fulfilled,
+          addContact.fulfilled,
+          deleteContact.fulfilled
+        ),
         anyFulfilledReducer
       );
   },

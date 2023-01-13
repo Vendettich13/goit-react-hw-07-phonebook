@@ -9,6 +9,8 @@
 }
 .list li p {
     font-weight: bold;
+    display: flex;
+    align-items: flex-end;
 }
 .list li button {
     padding: 5px 10px;

@@ -1,14 +1,16 @@
 .filter {
-    max-width: 500px;
+margin: 0 auto;
 }
 .filter p {
+font-weight: 600;
 margin-top: 20px;
 margin-bottom: 10px;
 }
 .filter input {
-    width:500px;
-    height: 25px;
-    border: 3px outset rgba(123, 34, 191, 0.85);
-    border-radius: 5px;
-    margin-bottom: 10px;
+width: 380px;
+padding-left: 10px;
+height: 25px;
+border: 3px outset rgba(123, 34, 191, 0.85);
+border-radius: 5px;
+margin-bottom: 15px;
 }

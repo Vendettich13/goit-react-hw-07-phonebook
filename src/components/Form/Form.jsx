@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "redux/operations"; 
 import { selectContacts } from "redux/selectors";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Notiflix from "notiflix";
 import css from "../Form/Form.module.css"
 
 
@@ -36,8 +35,10 @@ export function Form() {
     const number = e.target.elements.number.value;
 
     const isExist = contacts.find(contact => { return contact.name === name })
-      if (isExist) {
-          return toast.warn(`${name} is already in contacts.`)
+    if (isExist) {
+        setName('');
+        setNumber('');
+          return Notiflix.Notify.failure(`${name} is already in contacts...`, {timeout: 2000})
     };
     
     dispatch(addContact({name, number}));
@@ -47,7 +48,7 @@ export function Form() {
       
         return <form onSubmit={handleSubmit} className={css.form}>
         <label>
-                <p>Name</p> <input
+        <p>Name</p> <input
         value={name}
         onChange={handleChange}
         type="text"
@@ -67,7 +68,6 @@ export function Form() {
         required/>
         </label>
         <button type="submit">Add contact</button>
-        <ToastContainer/>
       </form>
     
 }

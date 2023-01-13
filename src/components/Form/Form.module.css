@@ -1,7 +1,6 @@
 .form {
-    width: 500px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 400px;
+    margin: 20px auto;
 }
 .form label {
     display: flex;
@@ -10,7 +9,9 @@
 }
 .form button {
     padding: 5px 10px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 20px auto 0px;
     border: 4px outset rgba(213, 3, 255, 0.71);
     border-radius: 5px;
@@ -22,7 +23,7 @@
     border: 4px outset rgba(235, 137, 255, 0.71);
 }
 .form input {
-    width: 500px;
+    padding-left: 10px;
     height: 25px;
     border: 3px outset rgba(123, 34, 191, 0.85);
     border-radius: 5px;
